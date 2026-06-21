@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>华体会 · 内容聚合平台 | 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f6f0;
+      font-family: "Georgia", "Noto Serif SC", "Songti SC", serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    /* 首页横幅 */
+    .hero {
+      background: #eae6dc;
+      padding: 2.8rem 2rem;
+      margin-bottom: 2.8rem;
+      border-left: 6px solid #b7a98c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #3e3a33;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #6b6458;
+      border-top: 1px solid #cdc3b0;
+      padding-top: 0.6rem;
+      max-width: 70%;
+    }
+
+    /* 背景说明卡片 */
+    .context-card {
+      background: #fffcf7;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2.2rem;
+      border: 1px solid #e1d9cb;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .context-card h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #4d473c;
+      border-bottom: 1px dashed #d0c6b4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .context-card p {
+      margin-bottom: 1.1rem;
+      text-align: justify;
+    }
+
+    /* 引用块 */
+    .pullquote {
+      background: #f0ece3;
+      padding: 1.2rem 2rem;
+      margin: 1.8rem 0;
+      font-style: italic;
+      border-left: 4px solid #b7a98c;
+      color: #4a453b;
+      font-size: 1.05rem;
+    }
+
+    /* 三段式自然介绍 —— 用柔性网格 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2.5rem 0 2.2rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fcfaf5;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #e2dacb;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #f7f2e9;
+    }
+
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #5f5849;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #3d3930;
+      text-align: justify;
+    }
+
+    /* 提示框 – 类似杂志底栏 */
+    .info-box {
+      background: #fffcf7;
+      border: 1px solid #d4cbbc;
+      padding: 1.6rem 2rem;
+      margin: 2.5rem 0 1.8rem;
+      border-radius: 3px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-box .label {
+      display: inline-block;
+      background: #b7a98c;
+      color: #f9f5ec;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-box p {
+      margin-bottom: 0.6rem;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      border-top: 1px solid #d6cebe;
+      padding-top: 1.6rem;
+      margin-top: 2.2rem;
+      font-size: 0.95rem;
+      color: #5c5547;
+      text-align: center;
+    }
+
+    .footer-note a {
+      color: #6d614e;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7a98c;
+      font-weight: 500;
+      transition: border 0.15s;
+    }
+
+    .footer-note a:hover {
+      border-bottom: 1px solid #7e705a;
+    }
+
+    .inline-link {
+      color: #6d614e;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7a98c;
+      font-weight: 500;
+    }
+
+    .inline-link:hover {
+      border-bottom: 1px solid #7e705a;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .sub {
+        max-width: 100%;
+      }
+
+      .context-card {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .feature-grid {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .info-box {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- 首页横幅 -->
+  <header class="hero">
+    <h1>华体会</h1>
+    <div class="sub">信息门户 · 内容索引 · 可靠聚合</div>
+  </header>
+
+  <!-- 背景说明 -->
+  <section class="context-card">
+    <h2>站点背景与定位</h2>
+    <p>
+      <a href="https://index-portal-huatihui.com" class="inline-link">华体会</a> 并非单一议题或即时资讯站点，而是一个经过筛选的内容聚合入口。平台旨在整理来自多个可信来源的专题文章、分析报告与领域观察，不直接生产原始新闻，而是以索引与摘要的方式提供结构化的阅读路径。所有收录内容均标注原始出处，并尽可能链接至公开获取渠道。
+    </p>
+    <p>
+      在信息碎片化的当下，许多有价值的长篇讨论常常被时间线淹没。本索引门户尝试以「专题书架」的方式，保留那些值得被反复查阅的文本。站内目前覆盖产业观察、公共政策、技术伦理、文化评论等方向，更新周期为每两周一次，每次收录不超过十二篇精选内容。
+    </p>
+    <div class="pullquote">
+      “索引不是终点，而是通向深度阅读的渡口。”
+    </div>
+  </section>
+
+  <!-- 三段自然介绍（杂志式） -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>选文原则</h3>
+      <p>每篇入库内容均经过三层校验：来源可溯、逻辑自洽、数据可核查。不追逐热点，不收录二手转述类碎片。优先选择超过 3000 字的长文或系列专题，并附有编辑简评。</p>
+    </div>
+    <div class="feature-item">
+      <h3>分类结构</h3>
+      <p>目前设置五个主要栏目：数字社会、治理与权利、技术内观、日常人类学、档案室。每个栏目下设近期推荐与历史存档，方便读者按主题回溯。分类标签坚持克制，不做过度细分。</p>
+    </div>
+    <div class="feature-item">
+      <h3>阅读辅助</h3>
+      <p>每篇文章提供内容摘要（约 150 字）与关键概念注释。部分长文附有结构导图或章节跳转锚点，帮助读者快速定位兴趣段落。所有注释均采用悬挂式引用，不影响正文连贯性。</p>
+    </div>
+  </div>
+
+  <!-- 提示框：FAQ 摘要风格 -->
+  <div class="info-box">
+    <span class="label">常见疑问</span>
+    <p><strong>内容是否实时更新？</strong> 不追求时效性，收录周期为两周一次，更适合深度浏览而非信息追赶。所有链接在上线前均经过可访问性测试。</p>
+    <p><strong>收录来源有哪些？</strong> 包括学术期刊预印本、专业媒体专题报道、智库报告、独立博客长文等。不收录个人社交平台短帖或未署名内容。</p>
+    <p><strong>是否有付费墙？</strong> 本索引门户本身不设置任何付费限制，站内所有摘要与索引均可免费阅读。收录内容可能来自外部付费站点，本站仅提供索引与摘要，不绕过原始付费机制。</p>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <footer class="footer-note">
+    <p>若需浏览完整索引目录与最新收录，可前往 <a href="https://index-portal-huatihui.com">华体会</a> 首页。</p>
+    <p style="margin-top:0.5rem; font-size:0.8rem; color:#7a7264;">内容索引 · 版本 1.2 · 基于开放网络资源汇编</p>
+  </footer>
+</div>
+</body>
+</html>
