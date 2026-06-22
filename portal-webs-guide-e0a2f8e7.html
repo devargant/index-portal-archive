@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>麻将胡了 · 稳定入口与使用指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(145deg, #f9e7d0 0%, #f5d7b3 45%, #ebc493 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+      color: #3a2e24;
+    }
+    .page-wrapper {
+      max-width: 820px;
+      width: 100%;
+    }
+    /* 白色内容卡片 */
+    .content-card {
+      background: #fefcf8;
+      border-radius: 32px;
+      box-shadow: 0 8px 28px rgba(130, 75, 30, 0.10), 0 4px 12px rgba(0,0,0,0.03);
+      padding: 2.8rem 2.5rem;
+      backdrop-filter: blur(2px);
+      transition: box-shadow 0.15s ease;
+    }
+    @media (max-width: 600px) {
+      .content-card {
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+      }
+    }
+    /* 文章标题 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      color: #4d3626;
+      line-height: 1.2;
+      border-left: 6px solid #dba473;
+      padding-left: 1rem;
+    }
+    .subhead {
+      font-size: 1.05rem;
+      color: #7a5f45;
+      margin-top: 0.2rem;
+      margin-bottom: 2.2rem;
+      font-weight: 380;
+      border-bottom: 1px solid #eadaca;
+      padding-bottom: 1.1rem;
+    }
+    /* 导语 */
+    .intro {
+      font-size: 1.08rem;
+      background: #f7efdf;
+      padding: 1.0rem 1.5rem;
+      border-radius: 20px;
+      margin: 1.8rem 0 2rem 0;
+      color: #3d2e1e;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+    }
+    /* 正文段落 */
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    p.breakout {
+      padding-left: 1rem;
+      border-left: 3px solid #dba473;
+      color: #4f3a28;
+      font-style: normal;
+    }
+    /* 引用提醒块 */
+    .notice {
+      background: #f4ede3;
+      border-radius: 24px;
+      padding: 1.3rem 1.8rem;
+      margin: 2rem 0 1.8rem 0;
+      font-size: 0.98rem;
+      border: 1px solid #e3d3bd;
+      color: #4a3727;
+      box-shadow: 0 2px 8px rgba(130, 75, 30, 0.05);
+    }
+    .notice strong {
+      color: #8b5d3b;
+      font-weight: 550;
+    }
+    /* 圆角链接按钮感 */
+    a {
+      display: inline-block;
+      background: #ffffff;
+      padding: 0.2rem 1.0rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #7a532f;
+      border: 1px solid #dbb894;
+      transition: all 0.18s;
+      box-shadow: 0 1px 3px rgba(140, 90, 40, 0.06);
+      line-height: 1.5;
+    }
+    a:hover {
+      background: #f7eee1;
+      border-color: #b6885b;
+      color: #4a2f1b;
+      box-shadow: 0 2px 8px rgba(100, 60, 20, 0.10);
+      transform: translateY(-1px);
+    }
+    a:active {
+      background: #eadaca;
+      transform: scale(0.97);
+    }
+    /* 场景列表 —— 简洁描述 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2rem 0 1.5rem 0;
+    }
+    .feature-item {
+      flex: 1 1 180px;
+      background: #faf5ec;
+      border-radius: 24px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      border: 1px solid #e8dac8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .feature-item span {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      color: #5d4733;
+    }
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #f7f0e5;
+      border-radius: 24px;
+      padding: 1.2rem 1.8rem;
+      margin: 2rem 0 1rem 0;
+    }
+    .faq-mini details {
+      margin-bottom: 0.5rem;
+    }
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      color: #513d2b;
+    }
+    .faq-mini summary:hover {
+      color: #7a532f;
+    }
+    .faq-mini p {
+      margin: 0.6rem 0 0.4rem 1.2rem;
+      font-size: 0.95rem;
+      border-left: 2px solid #dbb894;
+      padding-left: 0.8rem;
+    }
+    /* 访问句 / 尾句 */
+    .closing {
+      margin: 2.2rem 0 0.8rem 0;
+      text-align: center;
+      font-size: 1.05rem;
+      padding: 0.8rem 1rem;
+      border-top: 1px solid #eadaca;
+      border-bottom: 1px solid #eadaca;
+    }
+    .closing a {
+      font-size: 1.1rem;
+      background: #ffffff;
+      padding: 0.3rem 1.4rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e7d5be;
+      margin: 2rem 0 1rem 0;
+      opacity: 0.4;
+    }
+    .footer-note {
+      font-size: 0.9rem;
+      text-align: center;
+      color: #7d664c;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="content-card">
+
+    <h1>麻将胡了 · 页面与入口</h1>
+    <div class="subhead">一篇关于稳定入口与界面说明的随笔</div>
+
+    <!-- 导语 -->
+    <div class="intro">
+      一些页面在初次打开时，总让人觉得少了点什么——可能是找不到最直接的入口，也可能是不确定接下来该往哪里点。<br>
+      这篇短文想说的，就是关于「麻将胡了」这个站点的入口位置、页面结构，以及它为什么值得花两分钟细看。
+    </div>
+
+    <!-- 正文第一段 -->
+    <p>
+      第一次接触 <a href="https://portal-webs-mahjong.com">麻将胡了</a> 的时候，我花了大概十秒才找到真正的功能入口。<br>
+      倒不是因为它藏得深，而是因为首页信息排布比较简洁，没有那种“快到我碗里来”的按钮群。后来用习惯了才发觉，这是一种克制——它把说明和访问路径放在了同一屏里，不催促，但也不含糊。
+    </p>
+
+    <p class="breakout">
+      这种设计思路其实很实在：你把页面当成一份说明书加一个门牌，门牌上写着「麻将胡了」，而门后的内容则需要你自己去推开看看。
+    </p>
+
+    <!-- 特点/场景 用网格表达 -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <span>📘</span>
+        <p>页面说明清晰，入口位置固定，不随刷新变动</p>
+      </div>
+      <div class="feature-item">
+        <span>🪟</span>
+        <p>深色与浅色模式自适应，阅读压力小</p>
+      </div>
+      <div class="feature-item">
+        <span>🧭</span>
+        <p>导航路径直接，减少点击焦虑</p>
+      </div>
+      <div class="feature-item">
+        <span>⚙️</span>
+        <p>功能模块分区明确，不易误触</p>
+      </div>
+    </div>
+
+    <!-- 第二段正文：叙述稳定入口 -->
+    <p>
+      关于稳定入口，我的理解是：一个页面如果每一次打开，核心链接的位置和名称都不变，那它就是一个可靠的起点。<br>
+      在 <a href="https://portal-webs-mahjong.com">麻将胡了</a> 这个站点里，主入口被放在内容区域的自然停顿处——既不是底部版权区的角落，也不是顶部导航里挤在一起的文字链。它像是一个段落里的自然落脚点：读到某处，你会看到一句话里嵌着链接，文本就是「麻将胡了」，不多不少。
+    </p>
+
+    <!-- 引用/提示 带强调 -->
+    <div class="notice">
+      <strong>一个提醒：</strong> 如果你在手机浏览器上打开这个页面，入口链接会保持原样，不会变成“点击这里”或者“进入”。<br>
+      它就在那里，文本就是它自己。这一点在如今很多页面里反而不多见。
+    </div>
+
+    <!-- FAQ 摘要 两三个小问题 -->
+    <div class="faq-mini">
+      <details>
+        <summary>这个页面适合什么人用？</summary>
+        <p>适合第一次接触该站、想先看说明再决定是否继续的用户；也适合需要稳定入口的老用户。</p>
+      </details>
+      <details>
+        <summary>入口链接会不会经常变？</summary>
+        <p>就目前观察，主链接文本与地址保持稳定，没有出现跳转或隐藏的情况。</p>
+      </details>
+      <details>
+        <summary>页面内容可信吗？</summary>
+        <p>这里仅描述页面结构与个人使用感受，不做额外承诺，实际体验请自行验证。</p>
+      </details>
+    </div>
+
+    <!-- 访问句 自然嵌入链接 -->
+    <div class="closing">
+      若你正在寻找一个直接的路径，可以试试这个：<br>
+      <a href="https://portal-webs-mahjong.com">麻将胡了</a>
+      <span style="display:inline-block; margin:0 0.4rem; color:#b58e6e;">—</span>
+      它被放在这里，没有多余的修饰，就是它本身。
+    </div>
+
+    <hr>
+
+    <!-- 最后一段正文 + 尾语 -->
+    <p style="font-size:0.95rem; color:#4f3a28;">
+      写这篇介绍页的初衷，是想把“入口在哪里、页面长什么样”用平实的语言讲清楚。没有夸张的标语，没有闪烁的按钮，只有一段段叙述和一处清晰的链接。<br>
+      如果你恰好需要了解「麻将胡了」这个站点，希望这篇内容能帮你少花一点找入口的时间，多留一点给页面本身。
+    </p>
+
+    <div class="footer-note">
+      —— 页面结构与说明 · 仅作参考
+    </div>
+
+  </div> <!-- end content-card -->
+</div> <!-- end page-wrapper -->
+</body>
+</html>
